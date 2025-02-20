@@ -1,0 +1,94 @@
+/* Reset and base styles */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --editor-bg: #ffffff;
+    --editor-fg: #2c3e50;
+    --scrollbar-thumb: #cbd5e1;
+    --scrollbar-track: #f1f5f9;
+    --selection-bg: #3b82f680;
+    --font-mono: 'Menlo', 'Monaco', 'Consolas', monospace;
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Dark mode preferences */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --editor-bg: #1e293b;
+        --editor-fg: #e2e8f0;
+        --scrollbar-thumb: #475569;
+        --scrollbar-track: #334155;
+        --selection-bg: #3b82f660;   
+    }
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--editor-bg);
+    color: var(--editor-fg);
+    font-family: var(--font-sans);
+}
+
+/* Textarea styling */
+textarea {
+    resize: none;
+    height: 100%;
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: inherit;
+    background-color: inherit;
+    transition: all 0.2s ease;
+    tab-size: 4;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    letter-spacing: 0.3px;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--scrollbar-thumb);
+}
+
+/* Selection styling */
+textarea::selection {
+    background-color: var(--selection-bg);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb);
+    opacity: 0.8;
+}
+
+/* Firefox scrollbar styling */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
